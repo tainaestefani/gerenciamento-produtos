@@ -1,5 +1,6 @@
 package com.loja.modelo;
 
+import com.loja.exception.ProdutoException;
 import java.util.Objects;
 
 public class Produto {
@@ -58,8 +59,10 @@ public class Produto {
 
     @Override
     public String toString() {
-        return String.format("Produto {ID: %d, Nome: '%s', Preço: %.2f, Quantidade em Estoque: %d, Categoria: '%s'}",
-                id, nome, preco, quantidadeEstoque, categoria);
+        return String.format(
+                "ID: %d | Nome: %s | Preço: R$ %.2f | Estoque: %d | Categoria: %s",
+                id, nome, preco, quantidadeEstoque, categoria
+        );
     }
 
     @Override
