@@ -67,14 +67,14 @@ public class GerenciadorProdutos {
     public List<Produto> buscarPorCategoria(String categoria) {
         List<Produto> resultado = new ArrayList<>();
         for (Produto produto : produtos) {
-            if (produto.getCategoria().toLowerCase().equals(categoria.toLowerCase())) {
+            if (produto.getCategoria().equalsIgnoreCase(categoria)) {
                 resultado.add(produto);
             }
         }
         return resultado;
     }
 
-    private void validarProduto(Produto produto) {
+    public void validarProduto(Produto produto) {
         if (produto.getNome() == null || produto.getNome().isEmpty()) {
             throw new ValidacaoException("O nome do produto não pode ser vazio.");
         }

@@ -1,6 +1,5 @@
 package com.loja.modelo;
 
-import com.loja.exception.ProdutoException;
 import java.util.Objects;
 
 public class Produto {
