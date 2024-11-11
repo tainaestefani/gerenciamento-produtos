@@ -8,10 +8,18 @@ import com.loja.modelo.Produto;
 import java.util.Optional;
 import java.util.Scanner;
 
+/**
+ * Classe de interface do usuário que fornece um menu para gerenciar produtos na loja.
+ * Permite as operações de criação, leitura, atualização e exclusão de produtos.
+ */
 public class MenuProdutos {
     private final Scanner scanner = new Scanner(System.in);
     private final GerenciadorProdutos gerenciador = new GerenciadorProdutos();
 
+    /**
+     * Exibe o menu principal para o usuário, permitindo a navegação entre as
+     * diferentes funcionalidades do sistema de gerenciamento de produtos.
+     */
     public void exibirMenu() {
         while (true) {
             System.out.println("\n=== Menu ===");
@@ -45,6 +53,10 @@ public class MenuProdutos {
         }
     }
 
+    /**
+     * Realiza o cadastro de um novo produto, solicitando dados ao usuário e
+     * validando-os antes de inserir no gerenciador de produtos.
+     */
     private void cadastrarProduto() {
         boolean produtoCadastrado = false;
 
@@ -62,6 +74,11 @@ public class MenuProdutos {
         }
     }
 
+    /**
+     * Solicita ao usuário os dados para criação ou atualização de um produto.
+     * Realiza também as validações dos dados.
+     * @return um objeto Produto com os dados fornecidos pelo usuário
+     */
     public Produto solicitarDados() {
         scanner.nextLine();
 
@@ -79,6 +96,11 @@ public class MenuProdutos {
         return produto;
     }
 
+    /**
+     * Lê uma entrada inteira do usuário e lida com valores inválidos.
+     * @param mensagem a mensagem exibida para o usuário
+     * @return o valor inteiro lido
+     */
     private int lerEntradaInteira(String mensagem) {
         int valor;
 
@@ -95,12 +117,21 @@ public class MenuProdutos {
         return valor;
     }
 
+    /**
+     * Lê uma entrada de texto do usuário.
+     * @param mensagem a mensagem exibida para o usuário
+     * @return a string lida
+     */
     private String lerEntradaString(String mensagem) {
         System.out.print(mensagem);
         return scanner.nextLine();
     }
 
-
+    /**
+     * Lê uma entrada de número decimal do usuário e lida com valores inválidos.
+     * @param mensagem a mensagem exibida para o usuário
+     * @return o valor decimal lido
+     */
     private double lerEntradaDouble(String mensagem) {
         double valor;
 
@@ -117,6 +148,9 @@ public class MenuProdutos {
         return valor;
     }
 
+    /**
+     * Realiza a busca de um produto pelo ID e exibe as informações, caso encontrado.
+     */
     private void buscarProduto() {
         System.out.println("\n=== Busca de Produto ===");
         try {
@@ -131,6 +165,11 @@ public class MenuProdutos {
         }
     }
 
+    /**
+     * Busca um produto pelo ID, com a opção de cancelar a busca.
+     * @return um Optional contendo o produto encontrado ou vazio se cancelado
+     * @throws ProdutoException se o produto não for encontrado
+     */
     public Optional<Produto> buscarProdutoPorId() throws ProdutoException {
         while (true) {
             int id = lerEntradaInteira("Id do produto (ou 0 para cancelar): ");
@@ -148,15 +187,21 @@ public class MenuProdutos {
         }
     }
 
-    private void listarProdutos(){
+    /**
+     * Lista todos os produtos cadastrados.
+     */
+    private void listarProdutos() {
         System.out.println("\n=== Lista de Produtos ===");
-        if(gerenciador.listarTodos().isEmpty()){
+        if (gerenciador.listarTodos().isEmpty()) {
             System.out.println("Lista de produtos vazia");
-        }else{
+        } else {
             gerenciador.listarTodos().forEach(System.out::println);
         }
     }
 
+    /**
+     * Atualiza as informações de um produto existente com base no ID.
+     */
     private void atualizarProduto() {
         System.out.println("\n=== Atualizar Produto ===");
         Optional<Produto> produtoExistente = buscarProdutoPorId();
@@ -172,6 +217,9 @@ public class MenuProdutos {
         }
     }
 
+    /**
+     * Exclui um produto existente com base no ID, após confirmação do usuário.
+     */
     private void deletarProduto() {
         System.out.println("\n=== Deletar Produto ===");
         Optional<Produto> produto = buscarProdutoPorId();
@@ -197,6 +245,9 @@ public class MenuProdutos {
         }
     }
 
+    /**
+     * Realiza a busca de produtos com um nome específico.
+     */
     private void buscarPorNome() {
         scanner.nextLine();
 
@@ -210,6 +261,9 @@ public class MenuProdutos {
         }
     }
 
+    /**
+     * Realiza a busca de produtos dentro de uma categoria específica.
+     */
     private void buscarPorCategoria() {
         scanner.nextLine();
 
@@ -223,6 +277,9 @@ public class MenuProdutos {
         }
     }
 
+    /**
+     * Realiza a busca de produtos dentro de uma faixa de preço especificada.
+     */
     private void buscarPorFaixaPreco() {
         System.out.println("\n=== Buscar Produto por Faixa de Preço ===");
         double precoMin = lerEntradaDouble("Preço mínimo: ");
