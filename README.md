@@ -41,7 +41,7 @@ O sistema oferece as seguintes funcionalidades:
 ```yaml
 === Cadastro de Produto ===
 Digite o nome: Notebook
-Digite o preço: 2500.00
+Digite o preço: 2500,00
 Digite a quantidade: 10
 Digite a categoria: Eletrônicos
 Produto cadastrado com sucesso! ID gerado: 1
