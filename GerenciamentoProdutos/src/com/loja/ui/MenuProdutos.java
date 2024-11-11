@@ -227,7 +227,7 @@ public class MenuProdutos {
         if (produto.isPresent()) {
             int entrada = lerEntradaInteira("Deseja deletar o produto com id "
                     + produto.get().getId()
-                    + "? Digite 1 para 'sim' ou 2 para 'não': ");
+                    + "? Digite 1 para 'Sim' ou 2 para 'Não': ");
 
             if (entrada == 1) {
                 if (gerenciador.deletar(produto.get().getId())) {
