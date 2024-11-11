@@ -1,5 +1,6 @@
 package com.loja.gerenciador;
 
+import com.loja.exception.ProdutoException;
 import com.loja.exception.ValidacaoException;
 import com.loja.modelo.Produto;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class GerenciadorProdutos {
                 return produto;
             }
         }
-        return null;
+        throw new ProdutoException("Produto com id " + id + " não encontrado.");
     }
 
     public List<Produto> listarTodos() {
@@ -72,6 +73,18 @@ public class GerenciadorProdutos {
             }
         }
         return resultado;
+    }
+
+    public List<Produto> buscarPorFaixaPreco(double precoMin, double precoMax) {
+        List<Produto> produtosFiltrados = new ArrayList<>();
+
+        for (Produto produto : produtos) {
+            if (produto.getPreco() >= precoMin && produto.getPreco() <= precoMax) {
+                produtosFiltrados.add(produto);
+            }
+        }
+
+        return produtosFiltrados;
     }
 
     public void validarProduto(Produto produto) {
