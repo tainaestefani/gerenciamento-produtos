@@ -93,3 +93,6 @@ Produto encontrado: ID: 1 | Nome: Notebook | Preço: R$ 2500,00 | Estoque: 10 | 
   <sub><b>Tainá Estefani Martins</b></sub><br>
   <sub>RA: 1778354</sub><br>
 </div>
+
+## Licença
+Este projeto é licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais detalhes.
